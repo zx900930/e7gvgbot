@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9-alpine
+FROM python:3.8-alpine
 RUN mkdir /e7gvgbot
 COPY . /e7gvgbot
 WORKDIR /e7gvgbot
