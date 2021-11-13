@@ -7,7 +7,7 @@ WORKDIR /e7gvgbot
 RUN apk update
 RUN apk add  --no-cache make automake gcc g++ subversion python3-dev linux-headers libxml2-dev libxslt-dev
 ENV VIRTUAL_ENV=/e7gvgbot/venv
-RUN python3 -m venv $VIRTUAL_ENV
+RUN virtualenv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN pip install -r /e7gvgbot/requirements.txt
 
@@ -17,6 +17,6 @@ WORKDIR /e7gvgbot
 COPY --from=builder /e7gvgbot ./
 RUN chmod +x /e7gvgbot
 ENV VIRTUAL_ENV=/e7gvgbot/venv
-RUN python3 -m venv $VIRTUAL_ENV
+RUN virtualenv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 CMD ["python3", "./bot.py"]
