@@ -1,4 +1,5 @@
 import json
+from ...xlog import xlogger
 import requests
 import os
 import re
@@ -23,11 +24,11 @@ def get_todaytime():
     elif day_of_week in weekday2:
         # print("weekday2")
         today_time = "./gvgdata/" + yesterday.strftime("%Y-%m-%d") + ".txt"
-        print("当前数据文件:"+today_time)
+        xlogger.info("当前数据文件:"+today_time)
     else:
-        print("weekend")
+        #print("weekend")
         today_time = "./gvgdata/" + beforeyes.strftime("%Y-%m-%d") + ".txt"
-        print("当前数据文件:"+today_time)
+        xlogger.info("当前数据文件:"+today_time)
     return today_time
 
 
