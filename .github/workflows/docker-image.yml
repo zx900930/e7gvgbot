@@ -30,7 +30,7 @@ jobs:
             triatk/e7gvgbot
           # Docker tags based on the following events/attributes
           flavor: |
-            latest=auto
+            latest=true
           tags: |
             type=schedule
             type=ref,event=branch
