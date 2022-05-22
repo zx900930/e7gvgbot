@@ -21,10 +21,28 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Docker meta
+        id: meta_e7gvgbot # you'll use this in the next step
+        uses: docker/metadata-action@v3
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            triatk/e7gvgbot
+          # Docker tags based on the following events/attributes
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
       -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: triatk/e7gvgbot:latest
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          tags: ${{ steps.meta_mikanarr.outputs.tags }}
+          labels: ${{ steps.meta_mikanarr.outputs.labels }}
