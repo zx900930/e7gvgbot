@@ -9,6 +9,7 @@ RUN apk add  --no-cache make automake gcc g++ subversion python3-dev linux-heade
 ENV VIRTUAL_ENV=/e7gvgbot/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN pip install wheel
 RUN pip install -r /e7gvgbot/requirements.txt
 
 FROM python:3.8-alpine
