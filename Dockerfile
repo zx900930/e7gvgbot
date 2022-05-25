@@ -4,8 +4,6 @@ FROM python:3.10-bullseye AS builder
 RUN mkdir /e7gvgbot
 COPY . /e7gvgbot
 WORKDIR /e7gvgbot
-RUN apt update
-RUN apt install make automake gcc g++ subversion python3-dev libxml2-dev libxslt1-dev
 ENV VIRTUAL_ENV=/e7gvgbot/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
