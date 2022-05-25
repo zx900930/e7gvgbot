@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.10.4-alpine3.16 AS builder
+FROM python:3.10-alpine AS builder
 RUN mkdir /e7gvgbot
 COPY . /e7gvgbot
 WORKDIR /e7gvgbot
@@ -13,7 +13,7 @@ RUN python3 -m pip install --upgrade pip
 RUN pip install wheel
 RUN pip install -r /e7gvgbot/requirements.txt
 
-FROM python:3.10.4-alpine3.16
+FROM python:3.10-alpine
 RUN mkdir /e7gvgbot
 WORKDIR /e7gvgbot
 COPY --from=builder /e7gvgbot ./
