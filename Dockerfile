@@ -11,7 +11,7 @@ RUN python3 -m pip install --upgrade pip
 RUN pip install wheel
 RUN pip install -r /e7gvgbot/requirements.txt
 
-FROM python:3.10-alpine
+FROM python:3.10-slim-bullseye
 RUN mkdir /e7gvgbot
 WORKDIR /e7gvgbot
 COPY --from=builder /e7gvgbot ./
