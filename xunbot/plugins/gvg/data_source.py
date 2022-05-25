@@ -1,4 +1,5 @@
 import json
+from logging import exception
 from ...xlog import xlogger
 import requests
 import os
@@ -119,11 +120,14 @@ async def get_gvg(gvg: str) -> str:
     if gvg in keywords:
         gvg = "对方公会名称"
     current_datafile = get_todaytime()
-    with open(current_datafile, "r", encoding="utf-8") as gvg_datafile:
-        for line in gvg_datafile:
-            if re.search(r"\b" + gvg + r"\b", line):
-                repass.append(line.rstrip())
-    response = "\n".join(repass)
+    try:
+        with open(current_datafile, "r", encoding="utf-8") as gvg_datafile:
+            for line in gvg_datafile:
+                if re.search(r"\b" + gvg + r"\b", line):
+                    repass.append(line.rstrip())
+        response = "\n".join(repass)
+    except OSError as e:
+        response = "今天还没有人提供情报哦!"
     return response
 
 
