@@ -150,7 +150,7 @@ async def tower(session: CommandSession):
 async def gvg(session: CommandSession):
     gvg_data = session.get(
         "gvg",
-        prompt="请输入目标: 上路 中路 下路 主城 \r\n小塔请直接输入小塔+编号 例子：小塔1 小塔2 小塔24\r\n小塔编号从左往右 上路1-8 中路11-18 下路21-28(小塔编号为纯数字，使用时不要在前面加上下路)\r\n输入 对手/公会/今天打 查询今日对手\r\n伤害计算器： https://triatk.gitee.io/maphe.github.io/zh/",
+        prompt="请输入目标: 上路 中路 下路 主城 \r\n小塔请直接输入小塔+编号 例子：小塔1 小塔2 小塔24\r\n小塔编号从左往右 上路1-8 中路11-18 下路21-28(小塔编号为纯数字，使用时不要在前面加上下路)\r\n输入 对手/公会/今天打 查询今日对手\r\n伤害计算器： https://maphe.vercel.app/zh/",
     )
     gvg_data_report = ""
     gvg_data_report = await get_gvg(gvg_data)
