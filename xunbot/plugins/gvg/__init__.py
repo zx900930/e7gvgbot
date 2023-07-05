@@ -26,8 +26,7 @@ __plugin_usage__ = r"""
 1.输入情报: 格式为 助手 上路/中路/下路/主城/小塔
 2.查询情报: 格式为 助手 情报
 3.历史记录: 格式为 助手 历史
-4.团战汇报工具： https://triatk.gitee.io/epicseven/
-5.还有一些团战无关的功能请用: 助手 帮助
+4.还有一些团战无关的功能请用: 助手 帮助
 """.strip()
 
 def wrap(text, lenth):
@@ -41,8 +40,7 @@ async def help(session: CommandSession):
     helpinfo = "使用说明:\r\n1.输入情报: 格式为 助手 上路/中路/下路/主城/小塔\
                          \r\n2.查询情报: 格式为 助手 情报 \
                          \r\n3.历史记录: 格式为 助手 历史\
-                         \r\n4.团战汇报工具： https://triatk.gitee.io/epicseven/\
-                         \r\n5.还有一些团战无关的功能请用: 助手 帮助"
+                         \r\n4.还有一些团战无关的功能请用: 助手 帮助"
     await session.send(helpinfo)
 
 
@@ -86,7 +84,7 @@ async def top(session: CommandSession):
 @on_command("mid", aliases=("mid", "中路"), permission=get_bot().level)
 async def mid(session: CommandSession):
     mid_data_report = ""
-    mid_data = session.get("mid", prompt="请输入情报\r\n团战汇报工具： https://triatk.gitee.io/epicseven/")
+    mid_data = session.get("mid", prompt="请输入情报\r\n")
     mid_data_report = await get_mid(mid_data)
     mid_data_report = mid_data_report.replace("\\r", "\r")
     mid_data_report = mid_data_report.replace("\\n", "\n")
@@ -116,7 +114,7 @@ async def bottom(session: CommandSession):
 @on_command("stronghold", aliases=("stronghold", "主城"), permission=get_bot().level)
 async def stronghold(session: CommandSession):
     stronghold_data_report = ""
-    stronghold_data = session.get("stronghold", prompt="请输入情报\r\n团战汇报工具： https://triatk.gitee.io/epicseven/")
+    stronghold_data = session.get("stronghold", prompt="请输入情报\r\n")
     stronghold_data_report = await get_stronghold(stronghold_data)
     stronghold_data_report = stronghold_data_report.replace("\\r", "\r")
     stronghold_data_report = stronghold_data_report.replace("\\n", "\n")
@@ -133,7 +131,7 @@ async def tower(session: CommandSession):
     tower_data_report = ""
     tower_data = session.get(
         "tower",
-        prompt="请输入小塔情报，格式为：小塔编号(纯数字，不要在前面加上下路之类) 情报内容\r\n小塔编号从左往右 上路1-8 中路11-18 下路21-28\r\n例子： 4 p1 埃及速度最多280 p2 200+速度 22k血金刚石暗龙，反击大宝剑龟速老头15k血， 150速左右尘埃凯隆  作业:宝马 光玛雅 火奶\r\n团战汇报工具： https://triatk.gitee.io/epicseven/",
+        prompt="请输入小塔情报，格式为：小塔编号(纯数字，不要在前面加上下路之类) 情报内容\r\n小塔编号从左往右 上路1-8 中路11-18 下路21-28\r\n例子： 4 p1 埃及速度最多280 p2 200+速度 22k血金刚石暗龙，反击大宝剑龟速老头15k血， 150速左右尘埃凯隆  作业:宝马 光玛雅 火奶\r\n",
     )
     tower_data_report = await get_tower(tower_data)
     tower_data_report = tower_data_report.replace("\\r", "\r")
@@ -150,7 +148,7 @@ async def tower(session: CommandSession):
 async def gvg(session: CommandSession):
     gvg_data = session.get(
         "gvg",
-        prompt="请输入目标: 上路 中路 下路 主城 \r\n小塔请直接输入小塔+编号 例子：小塔1 小塔2 小塔24\r\n小塔编号从左往右 上路1-8 中路11-18 下路21-28(小塔编号为纯数字，使用时不要在前面加上下路)\r\n输入 对手/公会/今天打 查询今日对手\r\n伤害计算器： https://maphe.vercel.app/zh/",
+        prompt="请输入目标: 上路 中路 下路 主城 \r\n小塔请直接输入小塔+编号 例子：小塔1 小塔2 小塔24\r\n小塔编号从左往右 上路1-8 中路11-18 下路21-28(小塔编号为纯数字，使用时不要在前面加上下路)\r\n输入 对手/公会/今天打 查询今日对手\r\n",
     )
     gvg_data_report = ""
     gvg_data_report = await get_gvg(gvg_data)
